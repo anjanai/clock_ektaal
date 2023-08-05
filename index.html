@@ -4,36 +4,63 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Analog Clock With Timezone Support Examples</title>
+<title>Ektaal on a clock</title>
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.loudflare.com/ajax/libs/bootswatch/4.3.1/darkly/bootstrap.min.css">
 <style>
-  .container { margin: 150px auto; }
-  .row { margin: 1.5rem auto; }
+  body { background-color: lightblue;
+	 margin: auto;
+	 width: 90%;
+	 padding: 10px;
+	 font-size: 1.2em;
+       }
+  input {
+  padding: 12.5px 10px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #2ba8fb;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+input:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+input:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+
   </style>
 </head>
 
 <body>
-  <label for="tempo">Tempo (bpm):</label> 
-  <span id="tempo_value" style="color:red;font-weight:bold;"></span>
+  <h1>Ektaal</h1>
+    
+  Tempo (bpm):
+  <span id="tempo_value" style="font-weight:bold;"></span>
+  <input type="button" value="Restart cycle from beat 1" onClick="restart()">
+ 
   <input type="button" value="/2" onClick="mult(0.5)">
   <input type="button" value="-10" onClick="add(-10)">
   <input type="button" value="-5" onClick="add(-5)">
   <input type="button" value="-1" onClick="add(-1)">
-  20
-  <input type="range" min="20" max="200" step="5" id="tempo_slider"
-	 value=100" onchange="show_tempo_value(this.value)"> 
-  200 
   <input type="button" value="+1" onClick="add(1)">
   <input type="button" value="+5" onClick="add(5)">
   <input type="button" value="+10" onClick="add(10)">
   <input type="button" value="x2" onClick="mult(2)">
-  <input type="button" value="Restart" onClick="restart()">
-
-
+  
   
   <div class="card-body">
-    <canvas id="basic" height="840"></canvas>
+    <canvas id="basic" height="800"></canvas>
   </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -4,6 +4,7 @@ var tempo, divider, startTime;
     
     function core(id, preset, options) {
 	var canvas = $(id)[0];
+
 	var ctx = canvas.getContext('2d');
 	var bound = canvas.height;
 	var safepad = 0;
@@ -102,6 +103,8 @@ var tempo, divider, startTime;
 
 
 	var bols = 'dhin dhin dhaa_ge ti_ra_ki_Ta tu naa kat taa dhaa_ge ti_ra_ki_Ta dhi naa'.split(' ');
+
+	var fontColors = 'cyan white white white white white white white white orange orange orange'.split(' ');
 	
 	var drawTexts = function () {
 	    for (var i = 0; i < 12; i++) {
@@ -113,8 +116,8 @@ var tempo, divider, startTime;
 
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
-		ctx.font = p2v(preset.fontSize).toString() + 'px ' + preset.fontName;
-		ctx.fillStyle = preset.fontColor;
+
+		ctx.fillStyle = fontColors[i];
 		ctx.beginPath();
 		ctx.font = p2v(preset.fontSize).toString() + 'px ' + preset.fontName;
 		ctx.fillText((i+1).toString(), radius + safepad + x, radius + safepad + y);
@@ -202,7 +205,6 @@ function getMillisecondsBetweenDates(date1, date2) {
 
 function show_tempo_value(t) {
     document.getElementById("tempo_value").innerHTML=t;
-    document.getElementById("tempo_slider").value = t;
     divider = 60 * 1000/t/4;
 
 }
