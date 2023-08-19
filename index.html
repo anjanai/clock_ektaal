@@ -44,11 +44,15 @@ input:active {
 
 <body>
   <h1>Ektaal</h1>
-    
+   
+  <input type="radio" id="auto" name="mode" value="auto" >
+  <label for="auto">Auto</label>
+  <input type="radio" id="manual" name="mode" value="manual" checked>
+  <label for="manual">Manual</label><br>
+   
   Tempo (bpm):
   <span id="tempo_value" style="font-weight:bold;"></span>
   <input type="button" value="Restart cycle from beat 1" onClick="restart()">
- 
   <input type="button" value="/2" onClick="mult(0.5)">
   <input type="button" value="-10" onClick="add(-10)">
   <input type="button" value="-5" onClick="add(-5)">

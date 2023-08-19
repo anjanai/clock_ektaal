@@ -1,5 +1,6 @@
-var tempo, divider, startTime;
+var tempo, divider, startTime, manualStep=0;
 
+   
 (function ($) {
     
     function core(id, preset, options) {
@@ -21,6 +22,11 @@ var tempo, divider, startTime;
 	
 	
 	var initialize = function () {
+	    $(document).keypress(function(e){
+		if ($("#manual").is(":checked")) manualStep++;
+	    });
+
+
 	    show_tempo_value(tempo);
 	    
 	    $(canvas).css('max-width', '100%');
@@ -160,14 +166,16 @@ var tempo, divider, startTime;
 		drawTexts();
 	    }
 
-	    var date = new Date();
-	    var s = date.getSeconds();
-
-	    s = Math.round(getMillisecondsBetweenDates(startTime,date) /divider);
-
 	    ctx.lineCap = 'round';
-	    
-            drawHandle(s * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
+
+	    if ($("#auto").is(":checked")) {
+		var date = new Date();
+		var s = date.getSeconds();
+		s = Math.round(getMillisecondsBetweenDates(startTime,date) /divider);
+		drawHandle(s * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
+	    } else {
+		drawHandle(manualStep * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
+	    }
 	    
 
 	    if (preset.drawPin) {
@@ -219,6 +227,7 @@ function mult(x) {
 
 function restart() {
     startTime = new Date();
+    manualStep = 0;
 }
 
 function htAnalogClock() {}
