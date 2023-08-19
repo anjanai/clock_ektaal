@@ -48,11 +48,13 @@ input:active {
   <input type="radio" id="auto" name="mode" value="auto" >
   <label for="auto">Auto</label>
   <input type="radio" id="manual" name="mode" value="manual" checked>
-  <label for="manual">Manual</label><br>
-   
+  <label for="manual">Manual</label>
+
+  <input type="button" value="Restart cycle from beat 1" onClick="restart()">
+	 
+  <div id=tempo_div>
   Tempo (bpm):
   <span id="tempo_value" style="font-weight:bold;"></span>
-  <input type="button" value="Restart cycle from beat 1" onClick="restart()">
   <input type="button" value="/2" onClick="mult(0.5)">
   <input type="button" value="-10" onClick="add(-10)">
   <input type="button" value="-5" onClick="add(-5)">
@@ -61,7 +63,7 @@ input:active {
   <input type="button" value="+5" onClick="add(5)">
   <input type="button" value="+10" onClick="add(10)">
   <input type="button" value="x2" onClick="mult(2)">
-  
+  </div>
   
   <div class="card-body">
     <canvas id="basic" height="800"></canvas>

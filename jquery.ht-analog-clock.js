@@ -169,11 +169,13 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineCap = 'round';
 
 	    if ($("#auto").is(":checked")) {
+		$("#tempo_div").show();
 		var date = new Date();
 		var s = date.getSeconds();
 		s = Math.round(getMillisecondsBetweenDates(startTime,date) /divider);
 		drawHandle(s * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
 	    } else {
+		$("#tempo_div").hide();
 		drawHandle(manualStep * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
 	    }
 	    
