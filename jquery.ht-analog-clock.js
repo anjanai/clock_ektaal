@@ -13,7 +13,8 @@ var tempo, divider, startTime, manualStep=0;
 	    safepad = preset.shadowBlur;
 	}
 	var radius = canvas.height / 2 - safepad;
-	var quarterStep = 2 * Math.PI / 48;
+	//var quarterStep = 2 * Math.PI / 48;
+	var quarterStep = 2 * Math.PI / 12;
 	var hourStep = 2 * Math.PI / 12;
 
 
@@ -23,7 +24,8 @@ var tempo, divider, startTime, manualStep=0;
 	
 	var initialize = function () {
 	    $(document).keypress(function(e){
-		if ($("#manual").is(":checked")) manualStep++;
+		//if ($("#manual").is(":checked"))
+		manualStep++;
 	    });
 
 
@@ -110,7 +112,7 @@ var tempo, divider, startTime, manualStep=0;
 
 	var bols = 'dhin dhin dhaa_ge ti_ra_ki_Ta tu naa kat taa dhaa_ge ti_ra_ki_Ta dhi naa'.split(' ');
 
-	var fontColors = 'cyan white white white white white white white white orange orange orange'.split(' ');
+	var fontColors = 'lightgreen lightgreen white white white white white white white white orange orange'.split(' ');
 	
 	var drawTexts = function () {
 	    for (var i = 0; i < 12; i++) {
@@ -240,7 +242,7 @@ htAnalogClock.preset_default = {
 
     drawSecondHand: true,
     drawMajorTicks: true,
-    drawMinorTicks: true,
+    drawMinorTicks: false,
     drawBorder: true,
     drawFill: true,
     drawTexts: true,
