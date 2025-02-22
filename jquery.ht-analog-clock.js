@@ -99,8 +99,8 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.165, 
-		    Math.PI * 1.5,false ); 
+		    Math.PI / 2, 
+		    Math.PI * 5/6 , true ); 
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 
@@ -109,8 +109,8 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.5, 
-		    Math.PI * 1.834,false ); 
+		    Math.PI / 6, 
+		    Math.PI / 2 , true);
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 
