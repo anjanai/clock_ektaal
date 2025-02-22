@@ -94,13 +94,15 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth, 0.0, 2 * Math.PI);
 	    ctx.fill();
 
+	    /* In the clock, "4" is 0/12, "5" is 1/12, "6" is 2/12 ... "1" is 9/12,,  "3" is 11/12 */
+
 	    /* last 2 beats */
 	    ctx.fillStyle = "orange";
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.5 , // 1 + 6/12
-		    Math.PI * 7/6 , true );  // 1 + 2/12
+		    Math.PI * 2 * 9/12 , 
+		    Math.PI * 2 * 7/12 , true );  
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 
@@ -110,8 +112,8 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.5, // 1 + 6/12
-		    Math.PI * 11/6, false ); // 1 + 10/12
+		    Math.PI * 2 * 9/12,
+		    Math.PI * 2 * 11/12, false ); 
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 	    
