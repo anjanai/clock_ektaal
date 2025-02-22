@@ -93,6 +93,29 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth, 0.0, 2 * Math.PI);
 	    ctx.fill();
+
+	    /* last 2 beats */
+	    ctx.fillStyle = "orange";
+	    ctx.lineWidth = p2v(preset.borderWidth);
+	    ctx.beginPath();
+	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
+		    Math.PI * 1.165, 
+		    Math.PI * 1.5,false ); 
+	    ctx.lineTo(radius + safepad, radius + safepad);
+	    ctx.fill();
+
+	    /* first 2 beats */
+	    ctx.fillStyle = "lightgreen";
+	    ctx.lineWidth = p2v(preset.borderWidth);
+	    ctx.beginPath();
+	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
+		    Math.PI * 1.5, 
+		    Math.PI * 1.834,false ); 
+	    ctx.lineTo(radius + safepad, radius + safepad);
+	    ctx.fill();
+
+	    
+	    
 	};
 
 
