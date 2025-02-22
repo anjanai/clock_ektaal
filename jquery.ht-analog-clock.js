@@ -99,8 +99,8 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.5 , 
-		    Math.PI * 7/6 , true ); 
+		    Math.PI * 1.5 , // 1 + 6/12
+		    Math.PI * 7/6 , true );  // 1 + 2/12
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 
@@ -110,8 +110,8 @@ var tempo, divider, startTime, manualStep=0;
 	    ctx.lineWidth = p2v(preset.borderWidth);
 	    ctx.beginPath();
 	    ctx.arc(radius + safepad, radius + safepad, radius - ctx.lineWidth,
-		    Math.PI * 1.5, 
-		    Math.PI * 11/6, false ); 
+		    Math.PI * 1.5, // 1 + 6/12
+		    Math.PI * 11/6, false ); // 1 + 10/12
 	    ctx.lineTo(radius + safepad, radius + safepad);
 	    ctx.fill();
 	    
@@ -280,7 +280,7 @@ htAnalogClock.preset_default = {
     majorTicksWidth: 0.005,
     minorTicksWidth: 0.0025,
 
-    fillColor: "#333",
+    fillColor: "#668cff", //"#333",
     pinColor: "#f88",
     pinRadius: 5.0,
 
