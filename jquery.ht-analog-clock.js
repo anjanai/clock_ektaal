@@ -148,7 +148,7 @@ var tempo, divider, startTime, manualStep=0;
 		ctx.textAlign = 'center';
 		ctx.textBaseline = 'middle';
 
-		ctx.fillStyle = fontColors[i];
+		ctx.fillStyle = "white"; //fontColors[i];
 		ctx.beginPath();
 		ctx.font = p2v(preset.fontSize).toString() + 'px ' + preset.fontName;
 		ctx.fillText((i+1).toString(), radius + safepad + x, radius + safepad + y);
