@@ -1,6 +1,7 @@
 var tempo, divider, startTime, manualStep=0;
+var playing = false;
+var tabla_started = false;
 
-   
 (function ($) {
     
     function core(id, preset, options) {
@@ -13,19 +14,24 @@ var tempo, divider, startTime, manualStep=0;
 	    safepad = preset.shadowBlur;
 	}
 	var radius = canvas.height / 2 - safepad;
-	//var quarterStep = 2 * Math.PI / 48;
-	var quarterStep = 2 * Math.PI / 12;
+	var quarterStep = 2 * Math.PI / 48;
+	//var quarterStep = 2 * Math.PI / 12;
 	var hourStep = 2 * Math.PI / 12;
 
 
-	tempo = 60;
+	tempo = 21.2;
+	divider = 60 * 1000/tempo;
+   
 	startTime = new Date();
 	
 	
 	var initialize = function () {
 	    $(document).keypress(function(e){
-		//if ($("#manual").is(":checked"))
-		manualStep++;
+		if ($('#mp3').length)
+		    console.log (new Date().getTime());
+		else
+		    manualStep++;
+		
 	    });
 
 
@@ -196,15 +202,17 @@ var tempo, divider, startTime, manualStep=0;
 
 	    ctx.lineCap = 'round';
 
-	    if ($("#auto").is(":checked")) {
-		$("#tempo_div").show();
-		var date = new Date();
-		var s = date.getSeconds();
-		s = Math.round(getMillisecondsBetweenDates(startTime,date) /divider);
-		drawHandle(s * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
+	    
+	    if ($('#mp3').length) {
+		if (advance_clock())
+		    // playing mp3; clock is in auto mode
+		    drawHandle(manualStep * hourStep,
+			       preset.secondHandLength,
+			       preset.secondHandWidth,
+			       preset.secondHandColor);   
 	    } else {
-		$("#tempo_div").hide();
-		drawHandle(manualStep * quarterStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
+		// manual mode
+		drawHandle(manualStep * hourStep, preset.secondHandLength, preset.secondHandWidth, preset.secondHandColor);
 	    }
 	    
 
@@ -213,6 +221,13 @@ var tempo, divider, startTime, manualStep=0;
 	    }
 
 	    window.requestAnimationFrame(function () {
+		if (playing && tabla_started==false) {
+		    let curtime = $("#mp3")[0].currentTime;
+		    if (curtime >= 3.1) {
+			startTime = new Date();
+			tabla_started = true;
+		    }
+		}
 		draw(this);
 	    });
 	};
@@ -242,8 +257,9 @@ function getMillisecondsBetweenDates(date1, date2) {
 }
 
 function show_tempo_value(t) {
+    if ($("#tempo_value").length == 0) return;
     document.getElementById("tempo_value").innerHTML=t;
-    divider = 60 * 1000/t/4;
+    divider = 60 * 1000/t;
 
 }
 
@@ -305,3 +321,26 @@ htAnalogClock.preset_default = {
     minuteHandWidth: 2.0,
     hourHandWidth: 3.0
 };
+
+function play() {
+    $("#mp3")[0].play();
+    playing = true;
+}
+
+function advance_clock()
+{
+    var date = new Date();
+    s = getMillisecondsBetweenDates(startTime,date);
+    if (tabla_started) {
+	if (s >= diffs[beat_index]) {
+	    //console.log (manualStep, beat_index);
+	    if (beat_index % 4 == 3)
+		manualStep++;
+	    beat_index++;
+	}
+
+	return true;
+	
+    }
+    return false;
+}

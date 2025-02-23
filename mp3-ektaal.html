@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Ektaal on a clock</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.loudflare.com/ajax/libs/bootswatch/4.3.1/darkly/bootstrap.min.css">
+<style>
+  body { background-color: lightgrey;
+	 margin: auto;
+	 width: 90%;
+	 padding: 10px;
+	 font-size: 1.2em;
+       }
+  input {
+  padding: 12.5px 10px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #2ba8fb;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+input:hover {
+  background-color: #6fc5ff;
+  box-shadow: 0 0 20px #6fc5ff50;
+  transform: scale(1.1);
+}
+
+input:active {
+  background-color: #3d94cf;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
+
+  </style>
+</head>
+
+<body>
+  <audio id=mp3>
+    <source src = "Jasraj_Shankara_VilEktaal.mp3">
+  </audio>
+
+  <!--
+  <input type="radio" id="auto" name="mode" value="auto">
+  <label for="auto">Auto</label>
+  <input type="radio" id="manual" name="mode" value="manual">
+  <label for="manual">Manual</label>
+  <input type="button" value="Restart cycle from beat 1" onClick="restart()">
+
+  <div id=tempo_div>
+  Tempo (bpm):
+  <span id="tempo_value" style="font-weight:bold;"></span>
+  <input type="button" value="/2" onClick="mult(0.5)">
+  <input type="button" value="-10" onClick="add(-10)">
+  <input type="button" value="-5" onClick="add(-5)">
+  <input type="button" value="-1" onClick="add(-1)">
+  <input type="button" value="+1" onClick="add(1)">
+  <input type="button" value="+5" onClick="add(5)">
+  <input type="button" value="+10" onClick="add(10)">
+  <input type="button" value="x2" onClick="mult(2)">
+  </div>
+  -->
+  
+  <input type="button" value="Play Music" onClick="play()">
+  
+  <div class="card-body">
+    <canvas id="basic" height="800"></canvas>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="jquery.ht-analog-clock.js"></script>
+<script src="beats.js"></script>
+<script>
+$(function () {
+  $("#basic").htAnalogClock();
+  });
+</script>
+</body>
+</html>
