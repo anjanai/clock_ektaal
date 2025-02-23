@@ -136,7 +136,7 @@ var tempo, divider, startTime, manualStep=0;
 	};
 
 
-	var bols = 'dhin dhin dhaa_ge ti_ra_ki_Ta tu naa kat taa dhaa_ge ti_ra_ki_Ta dhi naa'.split(' ');
+	var bols = 'Dhin Dhin DhaaGe TRKT Tu Naa Kat Taa DhaaGe TRKT Dhi Naa'.split(' ');
 
 	var fontColors = 'lightgreen lightgreen white white white white white white white white orange orange'.split(' ');
 	
@@ -156,7 +156,7 @@ var tempo, divider, startTime, manualStep=0;
 		ctx.font = p2v(preset.fontSize).toString() + 'px ' + preset.fontName;
 		ctx.fillText((i+1).toString(), radius + safepad + x, radius + safepad + y);
 		ctx.font = p2v(preset.fontSize - 4).toString() + 'px ' + preset.fontName;
-		ctx.fillText(bols[i], radius + safepad + x, radius + safepad + y + 40);
+		ctx.fillText(bols[i], radius + safepad + x, radius + safepad + y + 60);
 		ctx.stroke();
 	    }
 	};
@@ -293,9 +293,9 @@ htAnalogClock.preset_default = {
     minuteHandColor: "#fff",
     hourHandColor: "#fff",
 
-    fontColor: "#fff",
-    fontName: "Tahoma",
-    fontSize: 10.0,
+    fontColor: "#000",
+    fontName: "Arial",
+    fontSize: 15.0,
 
     secondHandLength: 90.0,
     minuteHandLength: 70.0,
