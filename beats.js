@@ -191,6 +191,6 @@ var beat_index = 0;
 
 var diffs = [];
 
-for (let i = 1; i < taps.length; i++)  diffs.push(taps[i] - taps[0]);
+for (let i = 4; i < taps.length; i+=4)  diffs.push(taps[i] - taps[0]);
 
 

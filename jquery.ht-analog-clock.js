@@ -326,6 +326,14 @@ function play() {
     $("#mp3")[0].play();
     playing = true;
 }
+function stop() {
+    $("#mp3")[0].pause();
+    $("#mp3")[0].currentTime = 0;
+    playing = false;
+    tabla_started = false;
+    manualStep = 0;
+    beat_index = 0;
+}
 
 function advance_clock()
 {
@@ -333,14 +341,10 @@ function advance_clock()
     s = getMillisecondsBetweenDates(startTime,date);
     if (tabla_started) {
 	if (s >= diffs[beat_index]) {
-	    //console.log (manualStep, beat_index);
-	    if (beat_index % 4 == 3)
-		manualStep++;
+	    manualStep++;
 	    beat_index++;
 	}
-
 	return true;
-	
     }
     return false;
 }
