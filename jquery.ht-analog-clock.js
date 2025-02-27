@@ -142,7 +142,7 @@ var tabla_started = false;
 	};
 
 
-	var bols = 'Dhin Dhin DhaaGe TRKT Tu Naa Kat Taa DhaaGe TRKT Dhi Naa'.split(' ');
+	var bols = 'Dhin Dhin DhaaGe TRKT Tu Naa Kat Tin DhaaGe TRKT Dhi Naa'.split(' ');
 
 	var fontColors = 'lightgreen lightgreen white white white white white white white white orange orange'.split(' ');
 	
